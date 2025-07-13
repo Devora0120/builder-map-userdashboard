@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import {
   Bell,
   Search,
@@ -10,6 +10,8 @@ import {
   Award,
   FileText,
   Users,
+  Menu,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -44,13 +46,29 @@ const navigation = [
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
-        <div className="container flex h-12 items-center justify-between px-3">
+        <div className="container flex h-12 items-center justify-between px-3 md:px-4">
+          {/* Mobile menu button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden h-8 w-8 p-0"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-4 w-4" />
+            ) : (
+              <Menu className="h-4 w-4" />
+            )}
+          </Button>
+
           {/* Logo */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <div className="flex items-center space-x-2">
               <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center">
                 <Target className="h-4 w-4 text-primary-foreground" />
@@ -62,12 +80,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </div>
 
           {/* Search */}
-          <div className="flex-1 max-w-sm mx-6">
-            <div className="relative">
+          <div className="hidden sm:flex flex-1 max-w-sm mx-4 md:mx-6">
+            <div className="relative w-full">
               <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search..."
-                className="pl-8 pr-3 h-8 text-sm"
+                className="pl-8 pr-3 h-8 text-sm w-full"
               />
             </div>
           </div>
@@ -122,9 +140,22 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       </header>
 
       <div className="flex">
+        {/* Mobile Sidebar Overlay */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 z-40 bg-black/50 md:hidden"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <aside className="hidden md:flex md:w-56 md:flex-col">
-          <div className="flex grow flex-col gap-y-4 overflow-y-auto bg-card px-4 pb-3">
+        <aside
+          className={`
+          fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:w-56 md:flex md:flex-col
+          ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+        >
+          <div className="flex grow flex-col gap-y-4 overflow-y-auto bg-card px-4 pb-3 pt-12 md:pt-4">
             <nav className="flex flex-1 flex-col pt-4">
               <ul role="list" className="flex flex-1 flex-col gap-y-5">
                 <li>
@@ -178,7 +209,19 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </aside>
 
         {/* Main content */}
-        <main className="flex-1 xl:overflow-hidden">{children}</main>
+        <main className="flex-1 xl:overflow-hidden w-full md:w-auto">
+          {/* Mobile Search */}
+          <div className="sm:hidden p-4 border-b bg-card">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search courses, activities, research..."
+                className="pl-10 pr-4 h-9"
+              />
+            </div>
+          </div>
+          {children}
+        </main>
       </div>
     </div>
   );
