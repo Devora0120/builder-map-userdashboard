@@ -43,37 +43,41 @@ export default function AchievementBadge({
   return (
     <Card
       className={cn(
-        "relative overflow-hidden transition-all duration-300 hover:scale-105",
+        "relative overflow-hidden transition-all duration-300 hover:scale-[1.02]",
         unlocked ? "opacity-100" : "opacity-60",
       )}
     >
-      <CardContent className="p-4">
-        <div className="flex items-start gap-3">
+      <CardContent className="p-3">
+        <div className="flex items-start gap-2">
           <div
             className={cn(
-              "p-3 rounded-full shrink-0",
+              "p-2 rounded-full shrink-0",
               unlocked
                 ? variantStyles[variant]
                 : "bg-muted text-muted-foreground",
             )}
           >
-            <Icon className="h-6 w-6" />
+            <Icon className="h-4 w-4" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-foreground truncate">{title}</h3>
-            <p className="text-sm text-muted-foreground mt-1">{description}</p>
+            <h3 className="font-medium text-sm text-foreground truncate">
+              {title}
+            </h3>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              {description}
+            </p>
 
             {!unlocked && maxProgress > 1 && (
-              <div className="mt-3">
-                <div className="flex items-center justify-between text-xs mb-1">
+              <div className="mt-2">
+                <div className="flex items-center justify-between text-[10px] mb-1">
                   <span className="text-muted-foreground">Progress</span>
                   <span className="font-medium">
                     {progress}/{maxProgress}
                   </span>
                 </div>
-                <div className="w-full bg-muted rounded-full h-1.5">
+                <div className="w-full bg-muted rounded-full h-1">
                   <div
-                    className="bg-primary h-1.5 rounded-full transition-all duration-300"
+                    className="bg-primary h-1 rounded-full transition-all duration-300"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -81,7 +85,10 @@ export default function AchievementBadge({
             )}
 
             {unlocked && (
-              <Badge variant="outline" className="mt-2 text-xs">
+              <Badge
+                variant="outline"
+                className="mt-1.5 text-[10px] px-1.5 py-0.5"
+              >
                 Unlocked!
               </Badge>
             )}
