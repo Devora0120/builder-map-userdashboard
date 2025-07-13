@@ -31,37 +31,44 @@ export default function StreakCounter({
 
   return (
     <Card className="relative overflow-hidden">
-      <CardHeader className="pb-2">
-        <CardTitle className="flex items-center gap-2 text-base">
-          <Flame className={`h-4 w-4 ${getStreakColor(currentStreak)}`} />
+      <CardHeader className="pb-2 p-3 sm:p-4">
+        <CardTitle className="flex items-center gap-2 text-sm sm:text-base">
+          <Flame
+            className={`h-3.5 w-3.5 sm:h-4 sm:w-4 ${getStreakColor(currentStreak)}`}
+          />
           {streakType} Streak
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3 pt-0">
+      <CardContent className="space-y-2 sm:space-y-3 pt-0 p-3 sm:p-4">
         <div className="text-center">
           <div
-            className={`text-3xl font-bold ${getStreakColor(currentStreak)}`}
+            className={`text-2xl sm:text-3xl font-bold ${getStreakColor(currentStreak)}`}
           >
             {currentStreak}
           </div>
-          <div className="text-xs text-muted-foreground">days</div>
-          <Badge variant="outline" className="mt-1.5 text-[10px] px-1.5 py-0.5">
+          <div className="text-[10px] sm:text-xs text-muted-foreground">
+            days
+          </div>
+          <Badge
+            variant="outline"
+            className="mt-1 sm:mt-1.5 text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5"
+          >
             {getStreakLevel(currentStreak)}
           </Badge>
         </div>
 
-        <div className="flex items-center justify-between text-xs border-t pt-3">
-          <div className="flex items-center gap-1.5">
-            <TrendingUp className="h-3 w-3 text-muted-foreground" />
+        <div className="flex items-center justify-between text-[10px] sm:text-xs border-t pt-2 sm:pt-3">
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <TrendingUp className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-muted-foreground" />
             <span className="text-muted-foreground">Personal Best</span>
           </div>
           <span className="font-semibold">{longestStreak} days</span>
         </div>
 
         {lastActivity && (
-          <div className="flex items-center justify-between text-xs">
-            <div className="flex items-center gap-1.5">
-              <Calendar className="h-3 w-3 text-muted-foreground" />
+          <div className="flex items-center justify-between text-[10px] sm:text-xs">
+            <div className="flex items-center gap-1 sm:gap-1.5">
+              <Calendar className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-muted-foreground" />
               <span className="text-muted-foreground">Last Activity</span>
             </div>
             <span className="font-medium">{lastActivity}</span>
@@ -69,11 +76,11 @@ export default function StreakCounter({
         )}
 
         {/* Streak visualization */}
-        <div className="grid grid-cols-7 gap-0.5 mt-3">
+        <div className="grid grid-cols-7 gap-0.5 mt-2 sm:mt-3">
           {Array.from({ length: 7 }, (_, i) => (
             <div
               key={i}
-              className={`h-2 w-full rounded-sm ${
+              className={`h-1.5 sm:h-2 w-full rounded-sm ${
                 i < currentStreak % 7
                   ? "bg-primary"
                   : currentStreak >= 7 && i === 6
@@ -83,7 +90,7 @@ export default function StreakCounter({
             />
           ))}
         </div>
-        <div className="text-[10px] text-center text-muted-foreground">
+        <div className="text-[9px] sm:text-[10px] text-center text-muted-foreground">
           This week's progress
         </div>
       </CardContent>
