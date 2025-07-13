@@ -75,55 +75,60 @@ const recentMilestones = [
 
 export default function ProgressTracker() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-foreground">
-            Real-Time Progress Tracker
+          <h2 className="text-xl font-bold text-foreground">
+            Progress Tracker
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Track your development across all domains
           </p>
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <Calendar className="h-4 w-4 mr-2" />
-            Quarter View
+        <div className="flex gap-1">
+          <Button variant="outline" size="sm" className="text-xs px-2">
+            <Calendar className="h-3 w-3 mr-1" />
+            Quarter
           </Button>
-          <Button variant="outline" size="sm">
-            <Clock className="h-4 w-4 mr-2" />
+          <Button variant="outline" size="sm" className="text-xs px-2">
+            <Clock className="h-3 w-3 mr-1" />
             Timeline
           </Button>
         </div>
       </div>
 
       {/* Progress Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {progressData.map((item) => {
           const Icon = item.icon;
           return (
             <Card key={item.domain} className="relative overflow-hidden">
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-2">
                 <div className="flex items-center justify-between">
-                  <div className={`p-2 rounded-lg ${item.bgColor}`}>
-                    <Icon className={`h-5 w-5 ${item.color}`} />
+                  <div className={`p-1.5 rounded-md ${item.bgColor}`}>
+                    <Icon className={`h-4 w-4 ${item.color}`} />
                   </div>
-                  <Badge variant="secondary" className="text-xs">
+                  <Badge
+                    variant="secondary"
+                    className="text-[10px] px-1.5 py-0.5"
+                  >
                     {item.milestones}/{item.total}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg">{item.domain}</CardTitle>
+                <CardTitle className="text-sm font-semibold">
+                  {item.domain}
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
+              <CardContent className="pt-0">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs">
                     <span className="text-muted-foreground">Progress</span>
                     <span className="font-semibold">{item.progress}%</span>
                   </div>
-                  <Progress value={item.progress} className="h-2" />
-                  <div className="flex items-center text-xs text-muted-foreground">
-                    <TrendingUp className="h-3 w-3 mr-1" />
+                  <Progress value={item.progress} className="h-1.5" />
+                  <div className="flex items-center text-[10px] text-muted-foreground">
+                    <TrendingUp className="h-2.5 w-2.5 mr-1" />
                     {item.milestones} milestones completed
                   </div>
                 </div>
@@ -135,34 +140,37 @@ export default function ProgressTracker() {
 
       {/* Recent Milestones */}
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-success" />
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <CheckCircle className="h-4 w-4 text-success" />
             Recent Milestones
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
+        <CardContent className="pt-0">
+          <div className="space-y-2">
             {recentMilestones.map((milestone, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-4 rounded-lg border bg-card/50 hover:bg-card transition-colors"
+                className="flex items-center justify-between p-3 rounded-md border bg-card/50 hover:bg-card transition-colors"
               >
                 <div className="flex-1">
-                  <h4 className="font-semibold text-foreground">
+                  <h4 className="font-medium text-sm text-foreground">
                     {milestone.title}
                   </h4>
-                  <div className="flex items-center gap-4 mt-1">
-                    <Badge variant="outline" className="text-xs">
+                  <div className="flex items-center gap-3 mt-0.5">
+                    <Badge
+                      variant="outline"
+                      className="text-[10px] px-1.5 py-0.5"
+                    >
                       {milestone.domain}
                     </Badge>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-[10px] text-muted-foreground">
                       {milestone.date}
                     </span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-semibold text-success">
+                  <span className="text-xs font-semibold text-success">
                     {milestone.impact}
                   </span>
                 </div>
