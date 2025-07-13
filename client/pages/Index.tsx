@@ -47,43 +47,46 @@ const weeklyCheckin = {
 export default function Index() {
   return (
     <DashboardLayout>
-      <div className="p-4 space-y-5">
+      <div className="p-3 sm:p-4 space-y-4 sm:space-y-5">
         {/* Welcome Section */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">
               Welcome back, Alex! 👋
             </h1>
-            <p className="text-muted-foreground text-sm mt-0.5">
+            <p className="text-muted-foreground text-xs sm:text-sm mt-0.5">
               You're on track to achieve your goals. Keep up the great work!
             </p>
           </div>
           <div className="flex gap-2">
-            <Button size="sm" className="gap-1.5">
+            <Button size="sm" className="gap-1.5 text-xs sm:text-sm">
               <Plus className="h-3.5 w-3.5" />
-              Add Activity
+              <span className="hidden xs:inline">Add Activity</span>
+              <span className="xs:hidden">Add</span>
             </Button>
           </div>
         </div>
 
         {/* Quick Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground">
+                <div className="min-w-0">
+                  <p className="text-[10px] sm:text-xs font-medium text-muted-foreground">
                     Current GPA
                   </p>
-                  <p className="text-xl font-bold text-success">3.7</p>
+                  <p className="text-lg sm:text-xl font-bold text-success">
+                    3.7
+                  </p>
                 </div>
-                <div className="h-9 w-9 bg-success/10 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="h-4 w-4 text-success" />
+                <div className="h-8 w-8 sm:h-9 sm:w-9 bg-success/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-success" />
                 </div>
               </div>
-              <div className="flex items-center mt-2 text-xs">
+              <div className="flex items-center mt-1.5 sm:mt-2 text-[10px] sm:text-xs">
                 <span className="text-success font-medium">+0.2</span>
-                <span className="text-muted-foreground ml-1">
+                <span className="text-muted-foreground ml-1 truncate">
                   from last semester
                 </span>
               </div>
@@ -91,21 +94,23 @@ export default function Index() {
           </Card>
 
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground">
+                <div className="min-w-0">
+                  <p className="text-[10px] sm:text-xs font-medium text-muted-foreground">
                     Admit Probability
                   </p>
-                  <p className="text-xl font-bold text-primary">78%</p>
+                  <p className="text-lg sm:text-xl font-bold text-primary">
+                    78%
+                  </p>
                 </div>
-                <div className="h-9 w-9 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Award className="h-4 w-4 text-primary" />
+                <div className="h-8 w-8 sm:h-9 sm:w-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Award className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
                 </div>
               </div>
-              <div className="flex items-center mt-2 text-xs">
+              <div className="flex items-center mt-1.5 sm:mt-2 text-[10px] sm:text-xs">
                 <span className="text-success font-medium">+10%</span>
-                <span className="text-muted-foreground ml-1">
+                <span className="text-muted-foreground ml-1 truncate">
                   this semester
                 </span>
               </div>
@@ -113,45 +118,47 @@ export default function Index() {
           </Card>
 
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground">
+                <div className="min-w-0">
+                  <p className="text-[10px] sm:text-xs font-medium text-muted-foreground">
                     Active Courses
                   </p>
-                  <p className="text-xl font-bold">6</p>
+                  <p className="text-lg sm:text-xl font-bold">6</p>
                 </div>
-                <div className="h-9 w-9 bg-info/10 rounded-lg flex items-center justify-center">
-                  <BookOpen className="h-4 w-4 text-info" />
+                <div className="h-8 w-8 sm:h-9 sm:w-9 bg-info/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-info" />
                 </div>
               </div>
-              <div className="flex items-center mt-2 text-xs">
-                <span className="text-muted-foreground">18 credits total</span>
+              <div className="flex items-center mt-1.5 sm:mt-2 text-[10px] sm:text-xs">
+                <span className="text-muted-foreground truncate">
+                  18 credits total
+                </span>
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-4">
+            <CardContent className="p-3 sm:p-4">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium text-muted-foreground">
+                <div className="min-w-0">
+                  <p className="text-[10px] sm:text-xs font-medium text-muted-foreground">
                     Weekly Checkin
                   </p>
-                  <p className="text-xl font-bold">
+                  <p className="text-lg sm:text-xl font-bold">
                     {weeklyCheckin.completed ? (
-                      <CheckCircle className="h-6 w-6 text-success" />
+                      <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-success" />
                     ) : (
-                      <Clock className="h-6 w-6 text-warning" />
+                      <Clock className="h-5 w-5 sm:h-6 sm:w-6 text-warning" />
                     )}
                   </p>
                 </div>
-                <div className="h-9 w-9 bg-warning/10 rounded-lg flex items-center justify-center">
-                  <Calendar className="h-4 w-4 text-warning" />
+                <div className="h-8 w-8 sm:h-9 sm:w-9 bg-warning/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-warning" />
                 </div>
               </div>
-              <div className="flex items-center mt-2 text-xs">
-                <span className="text-muted-foreground">
+              <div className="flex items-center mt-1.5 sm:mt-2 text-[10px] sm:text-xs">
+                <span className="text-muted-foreground truncate">
                   Week {weeklyCheckin.weekNumber}
                 </span>
               </div>
@@ -160,14 +167,14 @@ export default function Index() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5">
           {/* Left Column - Progress Tracker */}
-          <div className="xl:col-span-2">
+          <div className="lg:col-span-2 order-2 lg:order-1">
             <ProgressTracker />
           </div>
 
           {/* Right Column - Upcoming Tasks */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4 order-1 lg:order-2">
             {/* Gamification Section */}
             <StreakCounter
               currentStreak={12}
@@ -277,7 +284,7 @@ export default function Index() {
         </div>
 
         {/* Admit Probability Section */}
-        <div className="mt-6">
+        <div className="mt-5 sm:mt-6 order-3">
           <AdmitProbability />
         </div>
       </div>
