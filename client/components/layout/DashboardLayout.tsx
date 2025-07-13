@@ -147,7 +147,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         {mobileMenuOpen && (
           <div
             className="fixed inset-0 z-40 bg-black/50 md:hidden"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={closeMobileMenu}
           />
         )}
 
@@ -169,7 +169,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                         <li key={item.name}>
                           <a
                             href={item.href}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={closeMobileMenu}
                             className={`group flex gap-x-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors ${
                               item.current
                                 ? "bg-primary text-primary-foreground"
