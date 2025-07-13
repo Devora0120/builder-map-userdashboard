@@ -48,38 +48,38 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
-        <div className="container flex h-16 items-center justify-between px-4">
+        <div className="container flex h-12 items-center justify-between px-3">
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
-                <Target className="h-5 w-5 text-primary-foreground" />
+              <div className="h-7 w-7 rounded-md bg-primary flex items-center justify-center">
+                <Target className="h-4 w-4 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold text-foreground">
+              <span className="text-lg font-bold text-foreground">
                 GradPrep
               </span>
             </div>
           </div>
 
           {/* Search */}
-          <div className="flex-1 max-w-md mx-8">
+          <div className="flex-1 max-w-sm mx-6">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder="Search courses, activities, research..."
-                className="pl-10 pr-4"
+                placeholder="Search..."
+                className="pl-8 pr-3 h-8 text-sm"
               />
             </div>
           </div>
 
           {/* Right side */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             {/* Notifications */}
-            <Button variant="ghost" size="icon" className="relative">
-              <Bell className="h-5 w-5" />
+            <Button variant="ghost" size="sm" className="relative h-8 w-8 p-0">
+              <Bell className="h-4 w-4" />
               <Badge
                 variant="destructive"
-                className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs"
+                className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full p-0 text-[10px] leading-none flex items-center justify-center"
               >
                 3
               </Badge>
@@ -90,12 +90,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
-                  className="relative h-10 w-10 rounded-full"
+                  className="relative h-8 w-8 rounded-full p-0"
                 >
-                  <Avatar>
+                  <Avatar className="h-8 w-8">
                     <AvatarImage src="/placeholder.svg" alt="User" />
-                    <AvatarFallback>
-                      <User className="h-5 w-5" />
+                    <AvatarFallback className="text-xs">
+                      <User className="h-4 w-4" />
                     </AvatarFallback>
                   </Avatar>
                 </Button>
@@ -123,25 +123,25 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="hidden md:flex md:w-64 md:flex-col">
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-card px-6 pb-4">
-            <nav className="flex flex-1 flex-col pt-6">
-              <ul role="list" className="flex flex-1 flex-col gap-y-7">
+        <aside className="hidden md:flex md:w-56 md:flex-col">
+          <div className="flex grow flex-col gap-y-4 overflow-y-auto bg-card px-4 pb-3">
+            <nav className="flex flex-1 flex-col pt-4">
+              <ul role="list" className="flex flex-1 flex-col gap-y-5">
                 <li>
-                  <ul role="list" className="-mx-2 space-y-1">
+                  <ul role="list" className="-mx-1 space-y-0.5">
                     {navigation.map((item) => {
                       const Icon = item.icon;
                       return (
                         <li key={item.name}>
                           <a
                             href={item.href}
-                            className={`group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold transition-colors ${
+                            className={`group flex gap-x-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors ${
                               item.current
                                 ? "bg-primary text-primary-foreground"
                                 : "text-muted-foreground hover:text-foreground hover:bg-accent"
                             }`}
                           >
-                            <Icon className="h-5 w-5 shrink-0" />
+                            <Icon className="h-4 w-4 shrink-0" />
                             {item.name}
                           </a>
                         </li>
@@ -152,21 +152,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
                 {/* Quick Stats */}
                 <li>
-                  <div className="text-xs font-semibold leading-6 text-muted-foreground">
+                  <div className="text-xs font-semibold text-muted-foreground">
                     Quick Stats
                   </div>
-                  <div className="mt-2 space-y-2">
-                    <div className="flex items-center justify-between text-sm">
+                  <div className="mt-1.5 space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
                       <span className="text-muted-foreground">Current GPA</span>
                       <span className="font-semibold text-success">3.7</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-xs">
                       <span className="text-muted-foreground">
                         Admit Probability
                       </span>
                       <span className="font-semibold text-primary">78%</span>
                     </div>
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-xs">
                       <span className="text-muted-foreground">Activities</span>
                       <span className="font-semibold">12</span>
                     </div>
