@@ -1,6 +1,8 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import ProgressTracker from "@/components/dashboard/ProgressTracker";
 import AdmitProbability from "@/components/dashboard/AdmitProbability";
+import AchievementBadge from "@/components/gamification/AchievementBadge";
+import StreakCounter from "@/components/gamification/StreakCounter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -166,6 +168,35 @@ export default function Index() {
 
           {/* Right Column - Upcoming Tasks */}
           <div className="space-y-6">
+            {/* Gamification Section */}
+            <StreakCounter
+              currentStreak={12}
+              longestStreak={28}
+              streakType="Study"
+              lastActivity="Today"
+            />
+
+            <div className="space-y-3">
+              <h3 className="font-semibold text-sm text-muted-foreground">
+                Recent Achievements
+              </h3>
+              <AchievementBadge
+                title="Academic Excellence"
+                description="Maintain 3.5+ GPA for 2 semesters"
+                icon="trophy"
+                variant="gold"
+                unlocked={true}
+              />
+              <AchievementBadge
+                title="Research Pioneer"
+                description="Publish your first research paper"
+                icon="star"
+                variant="silver"
+                unlocked={false}
+                progress={3}
+                maxProgress={5}
+              />
+            </div>
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
