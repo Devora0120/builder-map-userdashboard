@@ -58,25 +58,26 @@ const admissionTrends = [
 
 export default function AdmitProbability() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
         <div>
-          <h2 className="text-xl font-bold text-foreground">
+          <h2 className="text-lg sm:text-xl font-bold text-foreground">
             Admit Probability Dashboard
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-xs sm:text-sm">
             Live probability estimator with strategic insights
           </p>
         </div>
-        <Button size="sm" className="gap-1.5">
+        <Button size="sm" className="gap-1.5 self-start sm:self-auto">
           <Zap className="h-3.5 w-3.5" />
-          Optimize
+          <span className="hidden xs:inline">Optimize</span>
+          <span className="xs:hidden">Opt</span>
         </Button>
       </div>
 
       {/* Main Probability Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
         <Card className="lg:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-base">
@@ -87,7 +88,7 @@ export default function AdmitProbability() {
           <CardContent className="space-y-4 pt-0">
             {/* Main Gauge */}
             <div className="flex items-center justify-center">
-              <div className="relative w-36 h-36">
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36">
                 <svg className="w-full h-full" viewBox="0 0 100 100">
                   {/* Background circle */}
                   <circle
@@ -113,10 +114,10 @@ export default function AdmitProbability() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-3xl font-bold text-primary">
+                  <span className="text-2xl sm:text-3xl font-bold text-primary">
                     {currentProbability}%
                   </span>
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-[10px] sm:text-xs text-muted-foreground">
                     Current Probability
                   </span>
                 </div>
@@ -190,16 +191,16 @@ export default function AdmitProbability() {
 
       {/* Profile Strengths Radar */}
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">
+        <CardHeader className="pb-2 sm:pb-3">
+          <CardTitle className="text-sm sm:text-base">
             Profile Strengths Analysis
           </CardTitle>
         </CardHeader>
         <CardContent className="pt-0">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
             {profileStrengths.map((strength) => (
               <div key={strength.domain} className="text-center space-y-1">
-                <div className="relative w-12 h-12 mx-auto">
+                <div className="relative w-10 h-10 sm:w-12 sm:h-12 mx-auto">
                   <svg className="w-full h-full" viewBox="0 0 100 100">
                     <circle
                       cx="50"
@@ -222,10 +223,12 @@ export default function AdmitProbability() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-sm font-bold">{strength.score}</span>
+                    <span className="text-xs sm:text-sm font-bold">
+                      {strength.score}
+                    </span>
                   </div>
                 </div>
-                <div className="text-[10px] font-medium text-center">
+                <div className="text-[9px] sm:text-[10px] font-medium text-center truncate">
                   {strength.domain}
                 </div>
               </div>
