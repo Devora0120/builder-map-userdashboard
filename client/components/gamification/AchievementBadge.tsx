@@ -47,37 +47,37 @@ export default function AchievementBadge({
         unlocked ? "opacity-100" : "opacity-60",
       )}
     >
-      <CardContent className="p-3">
-        <div className="flex items-start gap-2">
+      <CardContent className="p-2.5 sm:p-3">
+        <div className="flex items-start gap-1.5 sm:gap-2">
           <div
             className={cn(
-              "p-2 rounded-full shrink-0",
+              "p-1.5 sm:p-2 rounded-full shrink-0",
               unlocked
                 ? variantStyles[variant]
                 : "bg-muted text-muted-foreground",
             )}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-3 w-3 sm:h-4 sm:w-4" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="font-medium text-sm text-foreground truncate">
+            <h3 className="font-medium text-xs sm:text-sm text-foreground truncate">
               {title}
             </h3>
-            <p className="text-xs text-muted-foreground mt-0.5">
+            <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
               {description}
             </p>
 
             {!unlocked && maxProgress > 1 && (
-              <div className="mt-2">
-                <div className="flex items-center justify-between text-[10px] mb-1">
+              <div className="mt-1.5 sm:mt-2">
+                <div className="flex items-center justify-between text-[9px] sm:text-[10px] mb-1">
                   <span className="text-muted-foreground">Progress</span>
                   <span className="font-medium">
                     {progress}/{maxProgress}
                   </span>
                 </div>
-                <div className="w-full bg-muted rounded-full h-1">
+                <div className="w-full bg-muted rounded-full h-0.5 sm:h-1">
                   <div
-                    className="bg-primary h-1 rounded-full transition-all duration-300"
+                    className="bg-primary h-0.5 sm:h-1 rounded-full transition-all duration-300"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -87,7 +87,7 @@ export default function AchievementBadge({
             {unlocked && (
               <Badge
                 variant="outline"
-                className="mt-1.5 text-[10px] px-1.5 py-0.5"
+                className="mt-1 sm:mt-1.5 text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5"
               >
                 Unlocked!
               </Badge>
